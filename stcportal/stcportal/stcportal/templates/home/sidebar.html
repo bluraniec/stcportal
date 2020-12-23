@@ -1,0 +1,144 @@
+{% load static %}
+
+{% block sidebar-css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'stcportal/css/sidebar.css' %}">
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet"> -->
+{% endblock %}
+
+{% block side-bar %}
+<div id="sidebar">
+    <a href="/">
+        <button class="sidebar-button">
+            <div class="sidebar-icon"><img src="{% static 'stcportal/img/home.png' %}"> </img></div>HOME
+        </button>
+    </a>
+    {% if user.is_active and user.is_staff %}
+    <a href="/admin/stcportal/user/">
+        <button class="sidebar-button">
+            <div class="sidebar-icon"><img src="{% static 'stcportal/img/user.png' %}"> </img></div>USERS MANAGEMENT
+        </button>
+    </a>
+    {% if "/admin" in request.path %}
+    <a href="/admin/stcportal/user/">
+        <button class="sidebar-sub-button">
+            View Users
+        </button>
+    </a>
+    <a href="/admin/stcportal/user/add/">
+        <button class="sidebar-sub-button">
+            Add User
+        </button>
+    </a>
+    {% endif %}
+    {% endif %}
+    <a href="/subscribers">
+        <button class="sidebar-button">
+            <div class="sidebar-icon"><img src="{% static 'stcportal/img/subscribers.png' %}"> </img></div>SUBSCRIBER MANAGEMENT
+        </button>
+    </a>
+    {% if "/subscribers" in request.path %}
+    <a href="/subscribers">
+        <button class="sidebar-sub-button">
+            View Subscribers
+        </button>
+    </a>
+    <a href="/subscribers/add">
+        <button class="sidebar-sub-button">
+            Add Subscriber
+        </button>
+    </a>
+    {% endif %}
+    <a href="/packages">
+        <button class="sidebar-button">
+            <div class="sidebar-icon"><img src="{% static 'stcportal/img/subscriptions.png' %}"> </img></div>PACKAGES
+        </button>
+    </a>
+    {% if "/packages" in request.path %}
+    <a href="/packages">
+        <button class="sidebar-sub-button">
+            View Packages
+        </button>
+    </a>
+    <a href="/packages/add">
+        <button class="sidebar-sub-button">
+            Add Package
+        </button>
+    </a>
+    {% endif %}
+    <a href="/nullspeed/regular-users/">
+        <button class="sidebar-button">
+            <div class="sidebar-icon"><img src="{% static 'stcportal/img/subscriptions.png' %}"> </img></div>NULL SPEED REGULAR USERS
+        </button>
+    </a>
+    {% if "/nullspeed/regular-users" in request.path %}
+    <a href="/nullspeed/regular-users/">
+        <button class="sidebar-sub-button">
+            View NullSpeed Regular Users
+        </button>
+    </a>
+    <a href="/nullspeed/regular-users/add">
+        <button class="sidebar-sub-button">
+            Add NullSpeed Regular User
+        </button>
+    </a>
+    {% endif %}
+    <a href="/nullspeed/unused-cafe/">
+        <button class="sidebar-button">
+            <div class="sidebar-icon"><img src="{% static 'stcportal/img/subscriptions.png' %}"> </img></div>NULL SPEED UNUSED CAFE
+        </button>
+    </a>
+    {% if "/nullspeed/unused-cafe" in request.path %}
+    <a href="/nullspeed/unused-cafe/">
+        <button class="sidebar-sub-button">
+            View NullSpeed Unused Cafe
+        </button>
+    </a>
+    <a href="/nullspeed/unused-cafe/add">
+        <button class="sidebar-sub-button">
+            Add NullSpeed Unused Cafe
+        </button>
+    </a>
+    {% endif %}
+    <a href="/prepaid">
+        <button class="sidebar-button">
+            <div class="sidebar-icon"><img src="{% static 'stcportal/img/subscriptions.png' %}"> </img></div>PREPAID CARDS
+        </button>
+    </a>
+    {% if "/prepaid" in request.path %}
+    <a href="/prepaid">
+        <button class="sidebar-sub-button">
+            View Prepaid Cards
+        </button>
+    </a>
+    <a href="/prepaid/add">
+        <button class="sidebar-sub-button">
+            Add Prepaid Card
+        </button>
+    </a>
+    {% endif %}
+    <a href="/cafe">
+        <button class="sidebar-button">
+            <div class="sidebar-icon"><img src="{% static 'stcportal/img/subscriptions.png' %}"> </img></div>CAFE CARDS
+        </button>
+    </a>
+    {% if "/cafe" in request.path %}
+    <a href="/cafe">
+        <button class="sidebar-sub-button">
+            View Cafe Cards
+        </button>
+    </a>
+    <a href="/cafe/add">
+        <button class="sidebar-sub-button">
+            Add Cafe Cards
+        </button>
+    </a>
+    {% endif %}
+    {% if user.reporting_and_monitoring %}
+    <a href="/report">
+        <button class="sidebar-button">
+            <div class="sidebar-icon"><img src="{% static 'stcportal/img/report.png' %}"> </img></div>REPORTING & MONITORING
+        </button>
+    </a>
+    {% endif %}
+</div>
+{% endblock %}

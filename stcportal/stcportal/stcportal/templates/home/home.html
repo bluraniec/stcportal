@@ -1,0 +1,75 @@
+{% load i18n static %}<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+<head>
+<title>{{ title }} | STCS Broadband Support Portal</title>
+<!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet"> -->
+<link rel="icon"href="{% static 'stcportal/favicon.ico' %}">
+<link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}">
+<link rel="stylesheet" type="text/css" href="{% static 'stcportal/css/home.css' %}">
+{% block sidebar-css %} {% endblock %}
+{% block extrastyle %}{% endblock %}
+{% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}">{% endif %}
+{% block extrahead %}{% endblock %}
+{% block responsive %}
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/responsive.css" %}">
+    {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% static "admin/css/responsive_rtl.css" %}">{% endif %}
+{% endblock %}
+{% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE">{% endblock %}
+</head>
+{% load i18n %}
+
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
+  data-admin-utc-offset="{% now "Z" %}">
+
+<!-- Container -->
+<div id="container">
+    {% if not is_popup %}
+        <!-- Header -->
+        {% block header %}
+            {% include 'home/topbar.html' %}
+        {% endblock %}
+
+        <!-- SideBar -->
+        {% block side-bar %}
+            {% include 'home/sidebar.html' %}
+        {% endblock %}
+    {% endif %}
+    {% block messages %}
+        {% if messages %}
+        <ul class="messagelist">{% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|capfirst }}</li>
+        {% endfor %}</ul>
+        {% endif %}
+    {% endblock messages %}
+
+    <!-- Content -->
+    <div id="content" class="{% block coltype %}colM{% endblock %}">
+        {{ request.session.messages }}
+        {% block pretitle %}{% endblock %}
+        {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
+        {% block content %}
+        {% block object-tools %}{% endblock %}
+        {{ content }}
+            <!-- Table (Results) -->
+            {% block table-result %}
+                {% include 'home/table.html' %}
+            {% endblock %}
+            <!-- Form (Add/Edit) -->
+            {% block add-form %}
+                {% include 'home/add_form.html' %}
+            {% endblock %}
+        {% endblock %}
+        <br class="clear">
+    </div>
+
+    {% block footer %}<div id="footer"></div>{% endblock %}
+</div>
+
+</body>
+<script src="{% static 'stcportal/js/home.js' %}"></script>
+</html>

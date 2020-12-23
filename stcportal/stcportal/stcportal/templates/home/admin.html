@@ -1,0 +1,19 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'stcportal/css/admin.css' %}">
+{% block sidebar-css %} {% endblock %}
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+
+{% block sidebar %}
+    {% include 'home/sidebar.html' %}
+{% endblock %}
+
+{% block topbar %}
+    {% include 'home/topbar.html' %}
+{% endblock %}
+
+{% block content %}
+    <div id="content">
+        Welcome to the Official Saudi Telecom Solutions Broadband Support Portal.
+    </div>
+{% endblock %}

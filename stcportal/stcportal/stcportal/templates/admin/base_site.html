@@ -1,0 +1,13 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block title %}
+    {{ title }} | STCS Broadband Support Portal
+{% endblock %}
+
+{% block branding %}
+<link rel="stylesheet" type="text/css" href="{% static 'stcportal/css/login.css' %}">
+<link rel="icon"href="{% static 'stcportal/favicon.ico' %}">
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

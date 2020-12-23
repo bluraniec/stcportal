@@ -1,0 +1,45 @@
+# from django.contrib import admin
+from django.urls import path, include, re_path
+# from .views import home, null_speed, packages, prepaid, cafe, logout_view
+from .views import *
+
+urlpatterns = [
+        path('', home_login, name='home_login'),
+        path('logout/', home_logout, name='home_logout'),
+        path('subscribers/', authtable_main, name='subscribers'),
+        re_path(r'^subscribers/add', authtable_add, name='subscribers_add'),
+        re_path(r'^subscribers/search.*', authtable_search, name='subscribers_search'),
+        re_path(r'^subscribers/edit/(?P<subscriber_id>[\d]+)/$', authtable_edit, name='subscribers_edit'),
+        re_path(r'^subscribers/delete/(?P<subscriber_id>[\d]+)/$', authtable_delete, name='subscribers_delete'),
+        re_path(r'^subscribers/cancel/(?P<subscriber_id>[\d]+)/$', authtable_cancel, name='subscribers_cancel'),
+        path('nullspeed/regular-users/', nullspeed_regular_users_main, name='nullspeed_regular_users_main'),
+        re_path(r'^nullspeed/regular-users/add', nullspeed_regular_users_add, name='nullspeed_regular_users_add'),
+        re_path(r'^nullspeed/regular-users/search.*', nullspeed_regular_users_search, name='nullspeed_regular_users_search'),
+        re_path(r'^nullspeed/regular-users/edit/(?P<user_id>[\d]+)/$', nullspeed_regular_users_edit, name='nullspeed_regular_users_edit'),
+        re_path(r'^nullspeed/regular-users/delete/(?P<user_id>[\d]+)/$', nullspeed_regular_users_delete, name='nullspeed_regular_users_delete'),
+        re_path(r'^nullspeed/regular-users/activate/(?P<user_id>[\d]+)/$', nullspeed_regular_users_activate, name='nullspeed_regular_users_activate'),
+        path('nullspeed/unused-cafe/', nullspeed_unused_cafe_main, name='null_speed_unused_cafe_main'),
+        re_path(r'^nullspeed/unused-cafe/add', nullspeed_unused_cafe_add, name='nullspeed_unused_cafe_add'),
+        re_path(r'^nullspeed/unused-cafe/search.*', nullspeed_unused_cafe_search, name='nullspeed_unused_cafe_search'),
+        re_path(r'^nullspeed/unused-cafe/edit/(?P<card_id>[\d]+)/$', nullspeed_unused_cafe_edit, name='nullspeed_unused_cafe_edit'),
+        re_path(r'^nullspeed/unused-cafe/delete/(?P<card_id>[\d]+)/$', nullspeed_unused_cafe_delete, name='nullspeed_unused_cafe_delete'),
+        re_path(r'^nullspeed/unused-cafe/activate/(?P<card_id>[\d]+)/$', nullspeed_unused_cafe_activate, name='nullspeed_unused_cafe_activate'),
+        path('packages/', packages_main, name='packages'),
+        re_path(r'^packages/add', packages_add, name='packages_add'),
+        re_path(r'^packages/search.*', packages_search, name='packages_search'),
+        re_path(r'^packages/edit/(?P<package_id>[\d]+)/$', packages_edit, name='packages_edit'),
+        re_path(r'^packages/delete/(?P<package_id>[\d]+)/$', packages_delete, name='packages_delete'),
+        path('prepaid/', inactive_prepaid_main, name='inactive_prepaid'),
+        re_path(r'^prepaid/add', inactive_prepaid_add, name='inactive_prepaid_add'),
+        re_path(r'^prepaid/search.*', inactive_prepaid_search, name='packages_search'),
+        re_path(r'^prepaid/edit/(?P<card_id>[\d]+)/$', inactive_prepaid_edit, name='inactive_prepaid_edit'),
+        re_path(r'^prepaid/delete/(?P<card_id>[\d]+)/$', inactive_prepaid_delete, name='inactive_prepaid_delete'),
+        re_path(r'^prepaid/activate/(?P<card_id>[\d]+)/$', inactive_prepaid_activate, name='inactive_prepaid_activate'),
+        path('cafe/', cafecards_main, name='cafe'),
+        re_path(r'^cafe/add', cafecards_add, name='cafe_add'),
+        re_path(r'^cafe/search.*', cafecards_search, name='cafe_search'),
+        re_path(r'^cafe/edit/(?P<card_id>[\d]+)/$', cafecards_edit, name='cafe_edit'),
+        re_path(r'^cafe/delete/(?P<card_id>[\d]+)/$', cafecards_delete, name='cafe_delete'),
+        re_path(r'^cafe/cancel/(?P<card_id>[\d]+)/$', cafecards_cancel, name='cafe_cancel'),
+        re_path(r'^cafe/activate', cafecards_activate, name='cafe_activate')
+]

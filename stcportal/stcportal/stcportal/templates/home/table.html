@@ -1,0 +1,339 @@
+{% load static %}
+
+{% block table-css %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" type="text/css" href="{% static 'stcportal/css/table.css' %}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+{% endblock %}
+
+{% block table-result %}
+{% if request.path == "/subscribers/" or request.path == "/nullspeed/regular-users/" or request.path == "/nullspeed/unused-cafe/" or request.path == "/packages/" or request.path == "/prepaid/" or request.path == "/cafe/" or "search" in request.path %}
+<div class="row">
+    <div class="col">
+        <div>
+            <form method="get" action="{{ request.path }}search">
+                <input id="search_box" type="text" name="q" placeholder="Search...">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if request.path == "/subscribers/" or "/subscribers/search" in request.path %}
+<div class="table-responsive">
+    <table class="table">
+        <tbody id="myTable">
+            <tr>
+                {% if not user.read_only %}
+                <th scope="col">Edit</th>
+                <th scope="col">Cancel</th>
+                <th scope="col">Delete</th>
+                {% endif %}
+                {% for field in column_names %}
+                <th scope="col">{{ field.verbose_name }}</th>
+                {% endfor %}
+            </tr>
+            {% for entry in auth_table %}
+            <tr>
+                {% if not user.read_only %}
+                <td class="edit-button"><a href="/subscribers/edit/{{ entry.id }}/">EDIT</a></td>
+                <td class="cancel-button"><a href="/subscribers/cancel/{{ entry.id }}/">CANCEL</a></td>
+                <td class="delete-button"><a href="/subscribers/delete/{{ entry.id }}/">DELETE</a></td>
+                {% endif %}
+                <td>{{ entry.id }}</td>
+                <td>{{ entry.userlogin }}</td>
+                <td>{{ entry.timebanking }}</td>
+                <td>{{ entry.FreeTime }}</td>
+                <td>{{ entry.endofsubscription }}</td>
+                <td>{{ entry.password }}</td>
+                <td>{{ entry.framedip }}</td>
+                <td>{{ entry.loginlimit }}</td>
+                <td>{{ entry.blnRoaming }}</td>
+                <td>{{ entry.status }}</td>
+                <td>{{ entry.olddomain }}</td>
+                <td>{{ entry.newdomain }}</td>
+                <td>{{ entry.calledstationid }}</td>
+                <td>{{ entry.poolhint }}</td>
+                <td>{{ entry.typeid }}</td>
+                <td>{{ entry.speed }}</td>
+                <td>{{ entry.package }}</td>
+                <td>{{ entry.username }}</td>
+                <td>{{ entry.usertelephone }}</td>
+                <td>{{ entry.usernationality }}</td>
+                <td>{{ entry.idnumber }}</td>
+                <td>{{ entry.idtype }}</td>
+                <td>{{ entry.mobile }}</td>
+                <td>{{ entry.email }}</td>
+                <td>{{ entry.accounttype }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% if request.path == "/nullspeed/regular-users/" or "/nullspeed/regular-users/search" in request.path %}
+<div class="table-responsive-sm">
+    <table>
+        <tbody id="myTable">
+            <tr>
+                {% if not user.read_only %}
+                <th scope="col">Activate</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+                {% endif %}
+                {% for field in column_names %}
+                <th scope="col">{{ field.verbose_name }}</th>
+                {% endfor %}
+            </tr>
+            {% for entry in nullspeed_regular_users %}
+            <tr>
+                {% if not user.read_only %}
+                <td class="edit-button"><a href="/nullspeed/regular-users/activate/{{ entry.id }}/">ACTIVATE</a></td>
+                <td class="cancel-button"><a href="/nullspeed/regular-users/edit/{{ entry.id }}/">EDIT</a></td>
+                <td class="delete-button"><a href="/nullspeed/regular-users/delete/{{ entry.id }}/">DELETE</a></td>
+                {% endif %}
+                <td>{{ entry.id }}</td>
+                <td>{{ entry.userlogin }}</td>
+                <td>{{ entry.timebanking }}</td>
+                <td>{{ entry.FreeTime }}</td>
+                <td>{{ entry.endofsubscription }}</td>
+                <td>{{ entry.password }}</td>
+                <td>{{ entry.framedip }}</td>
+                <td>{{ entry.loginlimit }}</td>
+                <td>{{ entry.blnRoaming }}</td>
+                <td>{{ entry.status }}</td>
+                <td>{{ entry.olddomain }}</td>
+                <td>{{ entry.newdomain }}</td>
+                <td>{{ entry.calledstationid }}</td>
+                <td>{{ entry.poolhint }}</td>
+                <td>{{ entry.typeid }}</td>
+                <td>{{ entry.speed }}</td>
+                <td>{{ entry.package }}</td>
+                <td>{{ entry.username }}</td>
+                <td>{{ entry.usertelephone }}</td>
+                <td>{{ entry.usernationality }}</td>
+                <td>{{ entry.idnumber }}</td>
+                <td>{{ entry.idtype }}</td>
+                <td>{{ entry.mobile }}</td>
+                <td>{{ entry.email }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% if request.path == "/nullspeed/unused-cafe/" or "/nullspeed/unused-cafe/search" in request.path %}
+<div class="table-responsive-sm">
+    <table>
+        <tbody id="myTable">
+            <tr>
+                {% if not user.read_only %}
+                <th scope="col">Activate</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+                {% endif %}
+                {% for field in column_names %}
+                <th scope="col">{{ field.verbose_name }}</th>
+                {% endfor %}
+            </tr>
+            {% for entry in nullspeed_unused_cafe_cards %}
+            <tr>
+                {% if not user.read_only %}
+                <td class="edit-button"><a href="/nullspeed/unused-cafe/activate/{{ entry.id }}/">ACTIVATE</a></td>
+                <td class="cancel-button"><a href="/nullspeed/unused-cafe/edit/{{ entry.id }}/">EDIT</a></td>
+                <td class="delete-button"><a href="/nullspeed/unused-cafe/delete/{{ entry.id }}/">DELETE</a></td>
+                {% endif %}
+                <td>{{ entry.id }}</td>
+                <td>{{ entry.userlogin }}</td>
+                <td>{{ entry.timebanking }}</td>
+                <td>{{ entry.FreeTime }}</td>
+                <td>{{ entry.endofsubscription }}</td>
+                <td>{{ entry.password }}</td>
+                <td>{{ entry.framedip }}</td>
+                <td>{{ entry.loginlimit }}</td>
+                <td>{{ entry.blnRoaming }}</td>
+                <td>{{ entry.status }}</td>
+                <td>{{ entry.olddomain }}</td>
+                <td>{{ entry.newdomain }}</td>
+                <td>{{ entry.calledstationid }}</td>
+                <td>{{ entry.poolhint }}</td>
+                <td>{{ entry.typeid }}</td>
+                <td>{{ entry.speed }}</td>
+                <td>{{ entry.package }}</td>
+                <td>{{ entry.username }}</td>
+                <td>{{ entry.usertelephone }}</td>
+                <td>{{ entry.usernationality }}</td>
+                <td>{{ entry.idnumber }}</td>
+                <td>{{ entry.idtype }}</td>
+                <td>{{ entry.mobile }}</td>
+                <td>{{ entry.email }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% if request.path == "/packages/" or "/packages/search" in request.path %}
+<div class="table-responsive-sm">
+    <table>
+        <tbody id="myTable">
+            <tr>
+                {% if not user.read_only %}
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+                {% endif %}
+                {% for field in column_names %}
+                <th scope="col">{{ field.verbose_name }}</th>
+                {% endfor %}
+            </tr>
+            {% for entry in packages %}
+            <tr>
+                {% if not user.read_only %}
+                <td class="cancel-button"><a href="/packages/edit/{{ entry.TypeID }}/">EDIT</a></td>
+                <td class="delete-button"><a href="/packages/delete/{{ entry.TypeID }}/">DELETE</a></td>
+                {% endif %}
+                <td>{{ entry.TypeID }}</td>
+                <td>{{ entry.Type }}</td>
+                <td>{{ entry.HourlyRate }}</td>
+                <td>{{ entry.Sub_NoSub }}</td>
+                <td>{{ entry.SubscriptionFee }}</td>
+                <td>{{ entry.FreeHours }}</td>
+                <td>{{ entry.Description }}</td>
+                <td>{{ entry.countlogin }}</td>
+                <td>{{ entry.billperiod }}</td>
+                <td>{{ entry.visible }}</td>
+                <td>{{ entry.AutoRenewable }}</td>
+                <td>{{ entry.timebanking }}</td>
+                <td>{{ entry.Promotion }}</td>
+                <td>{{ entry.Unlimited }}</td>
+                <td>{{ entry.OnlinePay }}</td>
+                <td>{{ entry.SMSCredits }}</td>
+                <td>{{ entry.OnlineSubscriptionFee }}</td>
+                <td>{{ entry.ReferrerDays }}</td>
+                <td>{{ entry.ReferrerHours }}</td>
+                <td>{{ entry.Dealers }}</td>
+                <td>{{ entry.FreeCourses }}</td>
+                <td>{{ entry.DiscountCourses }}</td>
+                <td>{{ entry.Promotime }}</td>
+                <td>{{ entry.Promodays }}</td>
+                <td>{{ entry.HasEmail }}</td>
+                <td>{{ entry.GroupId }}</td>
+                <td>{{ entry.RoamingFreeHours }}</td>
+                <td>{{ entry.Speed }}</td>
+                <td>{{ entry.Price }}</td>
+                <td>{{ entry.DayPrice }}</td>
+                <td>{{ entry.UserType }}</td>
+                <td>{{ entry.HostingPlanID }}</td>
+                <td>{{ entry.GmailUsers }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% if request.path == "/prepaid/" or "/prepaid/search" in request.path %}
+<div class="table-responsive-sm">
+    <table>
+        <tbody id="myTable">
+            <tr>
+                {% if not user.read_only %}
+                <th scope="col">Activate</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+                {% endif %}
+                {% for field in column_names %}
+                <th scope="col">{{ field.verbose_name }}</th>
+                {% endfor %}
+            </tr>
+            {% for entry in inactive_prepaid_cards %}
+            <tr>
+                {% if not user.read_only %}
+                <td class="edit-button"><a href="/prepaid/activate/{{ entry.id }}/">ACTIVATE</a></td>
+                <td class="cancel-button"><a href="/prepaid/edit/{{ entry.id }}/">EDIT</a></td>
+                <td class="delete-button"><a href="/prepaid/delete/{{ entry.id }}/">DELETE</a></td>
+                {% endif %}
+                <td>{{ entry.id }}</td>
+                <td>{{ entry.code }}</td>
+                <td>{{ entry.Type }}</td>
+                <td>{{ entry.accounttype }}</td>
+                <td>{{ entry.hours }}</td>
+                <td>{{ entry.generationdate }}</td>
+                <td>{{ entry.usagedate }}</td>
+                <td>{{ entry.userlogin }}</td>
+                <td>{{ entry.dealer }}</td>
+                <td>{{ entry.selldate }}</td>
+                <td>{{ entry.sellprice }}</td>
+                <td>{{ entry.tracknumber }}</td>
+                <td>{{ entry.markdel }}</td>
+                <td>{{ entry.promoid }}</td>
+                <td>{{ entry.promocollected }}</td>
+                <td>{{ entry.cardpromodays }}</td>
+                <td>{{ entry.overactive }}</td>
+                <td>{{ entry.transferreddays }}</td>
+                <td>{{ entry.typeid }}</td>
+                <td>{{ entry.speed }}</td>
+                <td>{{ entry.package }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% if request.path == "/cafe/" or "/cafe/search" in request.path %}
+<div class="table-responsive-sm">
+    <table>
+        <tbody id="myTable">
+            <tr>
+                {% if not user.read_only %}
+                <th scope="col">Edit</th>
+                <th scope="col">Cancel</th>
+                <th scope="col">Delete</th>
+                {% endif %}
+                {% for field in column_names %}
+                <th scope="col">{{ field.verbose_name }}</th>
+                {% endfor %}
+            </tr>
+            {% for entry in auth_table %}
+            <tr>
+                {% if not user.read_only %}
+                <td class="edit-button"><a href="/cafe/edit/{{ entry.id }}/">EDIT</a></td>
+                <td class="cancel-button"><a href="/cafe/cancel/{{ entry.id }}/">CANCEL</a></td>
+                <td class="delete-button"><a href="/cafe/delete/{{ entry.id }}/">DELETE</a></td>
+                {% endif %}
+                <td>{{ entry.id }}</td>
+                <td>{{ entry.userlogin }}</td>
+                <td>{{ entry.timebanking }}</td>
+                <td>{{ entry.FreeTime }}</td>
+                <td>{{ entry.endofsubscription }}</td>
+                <td>{{ entry.password }}</td>
+                <td>{{ entry.framedip }}</td>
+                <td>{{ entry.loginlimit }}</td>
+                <td>{{ entry.blnRoaming }}</td>
+                <td>{{ entry.status }}</td>
+                <td>{{ entry.olddomain }}</td>
+                <td>{{ entry.newdomain }}</td>
+                <td>{{ entry.calledstationid }}</td>
+                <td>{{ entry.poolhint }}</td>
+                <td>{{ entry.typeid }}</td>
+                <td>{{ entry.speed }}</td>
+                <td>{{ entry.package }}</td>
+                <td>{{ entry.username }}</td>
+                <td>{{ entry.usertelephone }}</td>
+                <td>{{ entry.usernationality }}</td>
+                <td>{{ entry.idnumber }}</td>
+                <td>{{ entry.idtype }}</td>
+                <td>{{ entry.mobile }}</td>
+                <td>{{ entry.email }}</td>
+                <td>{{ entry.accounttype }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+{% endif %}
+{% endblock %}

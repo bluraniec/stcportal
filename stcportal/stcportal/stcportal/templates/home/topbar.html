@@ -1,0 +1,40 @@
+{% load i18n static %}
+
+{% block header-css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'stcportal/css/topbar.css' %}">
+{% endblock %}
+
+{% block header %}
+<div id="header">
+        <div id="branding">
+                <a href="/">
+                    <div id="logo">
+                        <img src="/static/stcportal/img/logo.png">
+                    </div>
+                <h1 id="site-name">Broadband Support Portal</h1>
+            </a>
+        </div>
+
+        <div id="user-tools">
+            {% block welcome-msg %}
+                {% trans 'Welcome,' %}
+                <strong>{% firstof user.get_short_name user.get_username %}</strong>.
+            {% endblock %}
+            {% block userlinks %}
+                {% if user.is_active and user.is_staff %}
+                    {% url 'django-admindocs-docroot' as docsroot %}
+                    {% if docsroot %}
+                        <a href="{{ docsroot }}">{% trans 'Documentation' %}</a> /
+                    {% endif %}
+                {% endif %}
+                {% if user.has_usable_password %}
+                <a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a> /
+                {% endif %}
+                <!-- <a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a> -->
+                <a href="/logout">{% trans 'Log out' %}</a>
+            {% endblock %}
+        </div>
+
+        {% block nav-global %}{% endblock %}
+</div>
+{% endblock %}

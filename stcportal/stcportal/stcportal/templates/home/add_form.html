@@ -1,0 +1,78 @@
+{% load static %}
+
+{% block table-css %}
+<link rel="stylesheet" type="text/css" href="{% static 'stcportal/css/table.css' %}">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block add-form %}
+
+{% if request.path == "/subscribers/add" or "/subscribers/edit" in request.path %}
+<div>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+    </form>
+</div>
+{% endif %}
+
+{% if request.path == "/packages/add" or "/packages/edit" in request.path %}
+<div>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+    </form>
+</div>
+{% endif %}
+
+{% if request.path == "/prepaid/add" or "/prepaid/edit" in request.path %}
+<div>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+    </form>
+</div>
+{% endif %}
+
+{% if request.path == "/cafe/add" or "/cafe/edit" in request.path %}
+<div>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+    </form>
+</div>
+{% endif %}
+
+{% if request.path == "/nullspeed/regular-users/add" or "/nullspeed/regular-users/edit" in request.path %}
+<div>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+    </form>
+</div>
+{% endif %}
+
+{% if request.path == "/nullspeed/unused-cafe/add" or "/nullspeed/unused-cafe/edit" in request.path %}
+<div>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+    </form>
+</div>
+{% endif %}
+
+{% endblock %}
