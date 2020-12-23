@@ -1,0 +1,72 @@
+html,body {
+    height:100%;
+    width:100%;
+    margin:0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    background-color: #1f1e2c;
+    text-align:center;
+}
+
+.form-wrap {
+    text-decoration: none;
+    padding: 5%;
+    padding-bottom: 0%;
+    color: white;
+    background-color: rebeccapurple;
+}
+
+#login-form {
+    padding: 5%;
+    color: black;
+    background-color:white;
+    margin: 0;
+}
+
+caption {
+    background-color: rebeccapurple;
+}
+
+#header {
+    background-color: #1f1e2c;
+    /* background: linear-gradient(to right top, rgba(115,22,113,1) 0%, rgba(150,28,118,1) 40%, rgba(191,31,120,1) 70%, rgba(229,35,125,1) 100%); */
+}
+
+#content {
+    display: flex;
+    width: 80%;
+    margin: 3.8% 0% 0% 18%;
+    background-color: #272a3e;
+    border-radius: 1%;
+}
+
+#branding h1 {
+    color: white;
+    font-size: 1.2em;
+}
+
+.login 
+
+*{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.canvas-wrap{
+    position: relative;
+    /* background-image: linear-gradient(to right top, #761174, #93117a, #b0137d, #cc197f, #e7247e); */
+}
+
+
+/* #content {
+    display: flex;
+    justify-content: left;
+    float: right;
+    position: relative;
+} */

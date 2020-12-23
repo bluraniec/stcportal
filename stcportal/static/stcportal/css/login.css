@@ -1,0 +1,87 @@
+html,body {
+    height:100%;
+    width:100%;
+    margin:0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    background-color: #272a3b;
+    text-align:center;
+}
+
+#content {
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    margin: auto;
+}
+
+/* Main login DIV - TOP */
+.form-wrap {
+    text-decoration: none;
+    padding: 3%;
+    padding-bottom: 1%;
+    color: white;
+    background-color: rebeccapurple;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* LOGO */
+
+#logo-img {
+    width: 50%;
+}
+
+/* Broadband Support Portal */
+#site-name {
+    color: white;
+    font-size: 1.4vw;
+}
+
+
+/* Main login DIV - BOTTOM */
+#login-form {
+    padding: 3%;
+    color: black;
+    background-color:white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* INPUTS */
+label {
+    display: inherit;
+}
+
+input {
+    width: 80%;
+    border-radius: 20px;
+    padding: 2%;
+    border: 0.1px solid darkgrey;
+}
+
+/* LOGIN BUTTON */
+#login-button {
+    width: 20%;
+    background-color: rebeccapurple;
+    color: white;
+    height: 40px;
+}
+
+#login-button:hover  {
+    background-color: #ff375e;
+}
+
+/* Error Message */
+.errornote {
+    background: #ff375e;
+    margin: 0;
+    color: white;
+    padding: 2%;
+}

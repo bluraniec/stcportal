@@ -1,0 +1,76 @@
+html,body {
+    height:100%;
+    width:100%;
+    margin:0;
+    padding: 0;
+    /* overflow: hidden; */
+    display: flex;
+    background-color: #1f1e2c;
+}
+
+body {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    color: white;
+    background-color: #1f1e2c;
+}
+
+#container {
+    background-color: #1f1e2c;
+}
+
+#content {
+    /* display: flex; */
+    display: inline-block;
+    float: right;
+    /* width: 75%; */
+    /* width: 78.5%; */
+    width: 80%;
+    padding: 1.5% 1.5% 1.5% 1.5%;
+    margin-right: 2.25%;
+    background-color: #272a3e;
+    color: white;
+    border-radius: 8px;
+}
+
+#content h1 {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 1.5em !important;
+    font-weight: 100 !important;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    color:white;
+}
+
+/* ADMIN */
+
+.dashboard #content {
+    width: 70%;
+}
+
+.module {
+    background: transparent;
+}
+
+.wide label {
+    color: white !important;
+}
+
+.submit-row {
+    background: transparent !important;
+}
+
+input[type="submit"] {
+    background-color: rebeccapurple !important;
+}
+
+.aligned label {
+    color: white !important;
+}
+
+.messagelist {
+    margin-left: 23%;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}

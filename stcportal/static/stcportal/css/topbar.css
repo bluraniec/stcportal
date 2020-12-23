@@ -1,0 +1,18 @@
+#header {
+    background-color: #1f1e2c;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+#logo {
+    position: relative;
+    margin: auto;
+    width: 20%;
+    margin-left: 0;
+}
+
+#branding h1 {
+    color: white;
+    font-size: 0.8em;
+    margin-left: 4.5%;
+}
